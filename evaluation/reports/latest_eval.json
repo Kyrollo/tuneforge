@@ -1,0 +1,16 @@
+{
+  "product": "tuneforge",
+  "timestamp": 1791720402.195261,
+  "status": "PASSED",
+  "base_model": "qwen2.5:0.5b",
+  "hardware": "NVIDIA RTX A5000 Laptop GPU (16GB VRAM)",
+  "trainable_pct": 1.123,
+  "vram_gb": 1.81,
+  "perplexity": 3.25,
+  "eval_loss": 1.18,
+  "calc_latency_us": 0.89,
+  "gpu_inference_ms": 3661.6,
+  "total_jobs": 4,
+  "completed_models": 2,
+  "registered_adapters_count": 2
+}
