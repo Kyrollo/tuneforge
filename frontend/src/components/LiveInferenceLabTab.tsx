@@ -11,6 +11,7 @@ import {
   Sliders,
   CheckCircle2,
 } from 'lucide-react';
+import { MarkdownRenderer } from './MarkdownRenderer';
 
 const PRESET_PROMPTS = [
   {
@@ -199,8 +200,8 @@ export const LiveInferenceLabTab: React.FC = () => {
             </div>
 
             {/* Fine-Tuned Output Card */}
-            <div className="p-5 rounded-xl bg-slate-900 border border-orange-500/30">
-              <div className="flex items-center justify-between mb-2">
+            <div className="p-5 rounded-xl bg-slate-900 border border-orange-500/30 space-y-3">
+              <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <Sparkles className="w-4 h-4 text-orange-400" />
                   <h3 className="text-xs font-semibold uppercase tracking-wider text-orange-400">
@@ -211,22 +212,26 @@ export const LiveInferenceLabTab: React.FC = () => {
                   Domain Aligned
                 </span>
               </div>
-              <div className="p-3.5 rounded-lg bg-slate-950 border border-slate-800 text-xs text-slate-200 leading-relaxed font-mono whitespace-pre-wrap max-h-72 overflow-y-auto">
-                {result.fine_tuned_output}
-              </div>
+              <MarkdownRenderer
+                content={result.fine_tuned_output}
+                title={`LoRA Adapter Output (${result.adapter_id})`}
+                maxInitialHeight="max-h-[350px]"
+              />
             </div>
 
             {/* Baseline Output Card */}
-            <div className="p-5 rounded-xl bg-slate-900 border border-slate-800">
-              <div className="flex items-center gap-2 mb-2">
+            <div className="p-5 rounded-xl bg-slate-900 border border-slate-800 space-y-3">
+              <div className="flex items-center gap-2">
                 <Cpu className="w-4 h-4 text-slate-400" />
                 <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400">
                   Base Model Baseline ({result.base_model})
                 </h3>
               </div>
-              <div className="p-3.5 rounded-lg bg-slate-950 border border-slate-800 text-xs text-slate-400 leading-relaxed font-mono">
-                {result.baseline_output}
-              </div>
+              <MarkdownRenderer
+                content={result.baseline_output}
+                title={`Base Model Baseline (${result.base_model})`}
+                maxInitialHeight="max-h-[250px]"
+              />
             </div>
           </div>
         ) : (

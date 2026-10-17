@@ -82,4 +82,4 @@ class InferenceCompareRequest(BaseModel):
     model: str = "qwen2.5:0.5b"
     adapter_id: str = "ft-legal-801"
     temperature: float = 0.2
-    max_tokens: int = 180
+    max_tokens: int = 1024

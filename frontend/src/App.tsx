@@ -5,10 +5,11 @@ import { ModelRegistryTab } from './components/ModelRegistryTab';
 import { LiveInferenceLabTab } from './components/LiveInferenceLabTab';
 import { fetchJobs, fetchStats } from './lib/api';
 import { FineTuningJob, MLRegistryKPIs } from './types/tuneforge';
-import { GitCommit, Flame, Layers, PlayCircle } from 'lucide-react';
+import { FileUploadZone } from './components/FileUploadZone';
+import { GitCommit, Flame, Layers, PlayCircle, FolderUp } from 'lucide-react';
 
 export const App: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'experiments' | 'registry' | 'lab'>('experiments');
+  const [activeTab, setActiveTab] = useState<'experiments' | 'registry' | 'lab' | 'uploads'>('experiments');
   const [jobs, setJobs] = useState<FineTuningJob[]>([]);
   const [selectedJobId, setSelectedJobId] = useState<string | null>(null);
   const [kpis, setKpis] = useState<MLRegistryKPIs | null>(null);
@@ -83,6 +84,18 @@ export const App: React.FC = () => {
             <PlayCircle className="w-4 h-4" />
             Live Inference Lab
           </button>
+
+          <button
+            onClick={() => setActiveTab('uploads')}
+            className={`flex items-center gap-2 px-4 py-3 text-xs font-semibold uppercase tracking-wider border-b-2 transition-all ${
+              activeTab === 'uploads'
+                ? 'border-orange-500 text-orange-400 bg-orange-500/5'
+                : 'border-transparent text-slate-400 hover:text-slate-200'
+            }`}
+          >
+            <FolderUp className="w-4 h-4" />
+            Dataset Catalog Ingestion
+          </button>
         </div>
 
         {error && (
@@ -103,6 +116,13 @@ export const App: React.FC = () => {
         {activeTab === 'registry' && <ModelRegistryTab jobs={jobs} kpis={kpis} />}
 
         {activeTab === 'lab' && <LiveInferenceLabTab />}
+
+        {activeTab === 'uploads' && (
+          <FileUploadZone
+            title="Training Dataset & Corpus Ingestion"
+            acceptedTypes=".jsonl,.json,.csv,.txt,.parquet"
+          />
+        )}
       </main>
 
       {/* Footer */}
