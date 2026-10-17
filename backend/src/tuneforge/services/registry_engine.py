@@ -59,6 +59,6 @@ async def run_comparison_inference(req: InferenceCompareRequest) -> dict[str, An
     except Exception as exc:
         if not isinstance(exc, UpstreamOllamaError):
             raise UpstreamOllamaError(
-                f"Failed to connect to local Ollama on RTX A5000: {exc}"
+                f"Failed to connect to local Ollama on Dedicated NVIDIA GPU: {exc}"
             ) from exc
         raise

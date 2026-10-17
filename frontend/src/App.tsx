@@ -134,7 +134,7 @@ export const App: React.FC = () => {
           <span>QLoRA NF4 Quantized Training Architecture</span>
         </div>
         <div>
-          <span>Local Engine: NVIDIA RTX A5000 Laptop GPU (16GB VRAM)</span>
+          <span>Local Engine: Dedicated NVIDIA GPU (16GB VRAM)</span>
         </div>
       </footer>
     </div>

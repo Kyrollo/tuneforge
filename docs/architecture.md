@@ -25,7 +25,7 @@ flowchart TD
     end
 
     subgraph LocalHardware["Workstation GPU Hardware Layer"]
-        OllamaLocal["Local Ollama Engine\nNVIDIA RTX A5000 (16GB VRAM) / qwen2.5:0.5b"]
+        OllamaLocal["Local Ollama Engine\nDedicated NVIDIA GPU (16GB VRAM) / qwen2.5:0.5b"]
     end
 
     MLEngineer -->|Monitors Loss Curves & Tests Inference| UI
@@ -50,7 +50,7 @@ sequenceDiagram
     participant API as FastAPI Gateway
     participant Trainer as QLoRA Trainer Engine
     participant Registry as Model Registry
-    participant GPU as Local RTX A5000 (Ollama)
+    participant GPU as Local Dedicated NVIDIA GPU (Ollama)
     participant Store as Rolling Job Store
 
     ML->>UI: Submit Dataset & Hyperparameters (r=32, lr=2e-4)
@@ -63,8 +63,7 @@ sequenceDiagram
     UI->>ML: Render Loss Curve Chart & Model Lineage
     ML->>UI: Run Live Dual Inference Comparison
     UI->>API: POST /api/v1/compare {prompt, adapter_id}
-    API->>GPU: Execute Prompt with Adapter Conditioning on RTX A5000
-    GPU-->>API: Return Generated Response & Latency Telemetry
+    API->>GPU: Execute Prompt with Adapter Conditioning on Dedicated NVIDIA GPU-->>API: Return Generated Response & Latency Telemetry
     API-->>UI: Render Side-by-Side Base vs Fine-Tuned Outputs
 ```
 

@@ -61,7 +61,7 @@ export const ModelRegistryTab: React.FC<ModelRegistryTabProps> = ({ jobs, kpis }
                 <td className="py-2.5 text-emerald-400 font-bold">0.28% (1.4M params)</td>
                 <td className="py-2.5 text-emerald-400 font-bold">~2.2 GB VRAM</td>
                 <td className="py-2.5 font-sans text-emerald-300 font-semibold">
-                  Runs natively on NVIDIA RTX A5000 Laptop GPU (16GB)
+                  Runs natively on Dedicated NVIDIA GPU (16GB)
                 </td>
               </tr>
             </tbody>

@@ -1,6 +1,6 @@
 # TuneForge Evaluation & Reproducibility Guide
 
-TuneForge includes an automated evaluation benchmark runner that measures parameter calculation latency, loss curve trajectory modeling, and live local GPU adapter inference comparison on the workstation NVIDIA RTX A5000.
+TuneForge includes an automated evaluation benchmark runner that measures parameter calculation latency, loss curve trajectory modeling, and live local GPU adapter inference comparison on the workstation NVIDIA Dedicated NVIDIA GPU.
 
 ---
 

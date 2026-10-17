@@ -145,7 +145,7 @@ class TuneForgeStore:
         active = sum(1 for j in records if j.status == TrainingStatus.TRAINING)
         exported = [j.job_id for j in records if j.gguf_exported]
 
-        # VRAM estimate across active models (RTX A5000 16GB)
+        # VRAM estimate across active models (Dedicated NVIDIA GPU (16GB))
         vram_total = round(sum(2.2 if "0.5b" in j.base_model else 6.5 for j in records if j.status in (TrainingStatus.TRAINING, TrainingStatus.COMPLETED)), 1)
         vram_clamped = min(16.0, vram_total)
 

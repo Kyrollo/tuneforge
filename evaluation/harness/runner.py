@@ -49,7 +49,7 @@ def generate_finetuning_metrics_svg(report: dict, output_path: Path) -> None:
     TuneForge Parameter-Efficient QLoRA Studio &amp; Model Registry
   </text>
   <text x="32" y="66" font-family="JetBrains Mono, monospace" font-size="11" fill="#94a3b8">
-    Base: {report.get('base_model', 'qwen2.5:0.5b')} | Hardware: NVIDIA RTX A5000 (16GB VRAM) | Status: {report.get('status', 'PASSED')}
+    Base: {report.get('base_model', 'qwen2.5:0.5b')} | Hardware: Dedicated NVIDIA GPU (16GB VRAM) | Status: {report.get('status', 'PASSED')}
   </text>
 
   <!-- Metric Card 1: Trainable Parameter Efficiency -->
@@ -133,7 +133,7 @@ async def run_benchmark() -> int:
 
     print(f"--> [PASS] LoRA parameter computation: {calc_us:.2f} µs (Trainable: {pct}% | VRAM: {vram} GB)")
 
-    # Benchmark 2: Live GPU comparison inference on RTX A5000
+    # Benchmark 2: Live GPU comparison inference on Dedicated NVIDIA GPU
     compare_req = InferenceCompareRequest(
         prompt="Explain the difference between CrashLoopBackOff and OOMKilled in Kubernetes.",
         model="qwen2.5:0.5b",
@@ -160,7 +160,7 @@ async def run_benchmark() -> int:
         "timestamp": time.time(),
         "status": "PASSED",
         "base_model": "qwen2.5:0.5b",
-        "hardware": "NVIDIA RTX A5000 Laptop GPU (16GB VRAM)",
+        "hardware": "Dedicated NVIDIA GPU (16GB VRAM)",
         "trainable_pct": pct,
         "vram_gb": vram,
         "perplexity": 3.25,
@@ -186,7 +186,7 @@ async def run_benchmark() -> int:
 **Product**: TuneForge — Parameter-Efficient Fine-Tuning Studio & Model Registry  
 **Status**: PASSED  
 **Execution Timestamp**: 2026-10-11  
-**Hardware Engine**: NVIDIA RTX A5000 Laptop GPU (16GB VRAM)  
+**Hardware Engine**: Dedicated NVIDIA GPU (16GB VRAM)  
 **Inference Engine**: Local Ollama (`qwen2.5:0.5b`)  
 
 ---
@@ -208,7 +208,7 @@ async def run_benchmark() -> int:
 ## 2. Parameter-Efficient Architecture
 
 - **QLoRA Quantization**: 4-bit NormalFloat (NF4) base weight freezing with double quantization and 16-bit LoRA adapter deltas.
-- **On-Premise Workstation Training**: Enables enterprise fine-tuning on workstation hardware (NVIDIA RTX A5000 16GB) without cloud cluster costs.
+- **On-Premise Workstation Training**: Enables enterprise fine-tuning on workstation hardware (NVIDIA Dedicated NVIDIA GPU (16GB)) without cloud cluster costs.
 - **GGUF Export Pipeline**: One-click GGUF checkpoint export for deployment to Ollama, llama.cpp, and vLLM.
 
 ![TuneForge Metrics](finetuning_metrics.svg)

@@ -15,7 +15,7 @@ def test_calculate_trainable_parameters_qwen() -> None:
     assert total == 490_000_000
     assert trainable > 0
     assert pct > 0.0 and pct < 1.0  # Parameter-efficient (< 1%)
-    assert vram > 1.0 and vram < 5.0  # Runs easily on 16GB RTX A5000
+    assert vram > 1.0 and vram < 5.0  # Runs easily on 16GB Dedicated NVIDIA GPU
 
 
 def test_calculate_trainable_parameters_llama() -> None:
