@@ -6,7 +6,7 @@ build-backend = "hatchling.build"
 name = "tuneforge"
 version = "1.0.0"
 description = "LLM Fine-Tuning Studio: dataset curation, QLoRA/DPO training pipelines, evaluation, GGUF export, and model registry"
-readme = "../README.md"
+readme = "README.md"
 authors = [{ name = "Kyrollo", email = "kyrollo@users.noreply.github.com" }]
 requires-python = ">=3.12"
 dependencies = [
